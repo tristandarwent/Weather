@@ -14,6 +14,7 @@
 		FC13FE842200DD1B000A32E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC13FE832200DD1B000A32E4 /* Assets.xcassets */; };
 		FC13FE872200DD1B000A32E4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC13FE852200DD1B000A32E4 /* LaunchScreen.storyboard */; };
 		FC13FE8A2200DD1B000A32E4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FC13FE892200DD1B000A32E4 /* main.m */; };
+		FC13FE952200F56B000A32E4 /* WebServices.m in Sources */ = {isa = PBXBuildFile; fileRef = FC13FE942200F56B000A32E4 /* WebServices.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,8 @@
 		FC13FE862200DD1B000A32E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FC13FE882200DD1B000A32E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FC13FE892200DD1B000A32E4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		FC13FE932200F56B000A32E4 /* WebServices.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebServices.h; sourceTree = "<group>"; };
+		FC13FE942200F56B000A32E4 /* WebServices.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebServices.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,15 +87,41 @@
 			children = (
 				FC13FE7A2200DD1A000A32E4 /* AppDelegate.h */,
 				FC13FE7B2200DD1A000A32E4 /* AppDelegate.m */,
-				FC13FE7D2200DD1A000A32E4 /* ViewController.h */,
-				FC13FE7E2200DD1A000A32E4 /* ViewController.m */,
-				FC13FE802200DD1A000A32E4 /* Main.storyboard */,
+				FC13FE962200F572000A32E4 /* Networking */,
+				FC13FE972200F587000A32E4 /* View Controllers */,
+				FC13FE982200F5B1000A32E4 /* Storyboards */,
 				FC13FE832200DD1B000A32E4 /* Assets.xcassets */,
-				FC13FE852200DD1B000A32E4 /* LaunchScreen.storyboard */,
 				FC13FE882200DD1B000A32E4 /* Info.plist */,
 				FC13FE892200DD1B000A32E4 /* main.m */,
 			);
 			path = Weather;
+			sourceTree = "<group>";
+		};
+		FC13FE962200F572000A32E4 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				FC13FE932200F56B000A32E4 /* WebServices.h */,
+				FC13FE942200F56B000A32E4 /* WebServices.m */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		FC13FE972200F587000A32E4 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FC13FE7D2200DD1A000A32E4 /* ViewController.h */,
+				FC13FE7E2200DD1A000A32E4 /* ViewController.m */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		FC13FE982200F5B1000A32E4 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				FC13FE802200DD1A000A32E4 /* Main.storyboard */,
+				FC13FE852200DD1B000A32E4 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,6 +222,7 @@
 			files = (
 				FC13FE7F2200DD1A000A32E4 /* ViewController.m in Sources */,
 				FC13FE8A2200DD1B000A32E4 /* main.m in Sources */,
+				FC13FE952200F56B000A32E4 /* WebServices.m in Sources */,
 				FC13FE7C2200DD1A000A32E4 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

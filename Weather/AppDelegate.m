@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "WebServices.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +18,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [[WebServices sharedManager] fetchWeatherData:CLLocationCoordinate2DMake(43.6382846, -79.4161529)];
+    
     return YES;
 }
 
