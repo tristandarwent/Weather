@@ -35,11 +35,11 @@
 //
 //    [[CitiesManager sharedManager] saveCities];
 //
-//    for (City *city in [[CitiesManager sharedManager] cities]) {
-//        NSLog(@"%ld", (long)city.identifier);
-//        NSLog(@"%@", city.name);
-//        NSLog(@"%f", city.currentTemp);
-//    }
+    for (City *city in [[CitiesManager sharedManager] cities]) {
+        NSLog(@"%ld", (long)city.identifier);
+        NSLog(@"%@", city.name);
+        NSLog(@"%f", city.currentTemp);
+    }
     [GMSPlacesClient provideAPIKey:@"AIzaSyDPxIS8mjw160qUxF2xcjqpbxSCD1nhALA"];
     
     

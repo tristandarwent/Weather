@@ -13,6 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface CurrentWeatherTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *cityNameLbl;
 @property (weak, nonatomic) IBOutlet UILabel *currentTempLbl;
+@property (weak, nonatomic) IBOutlet UILabel *currentTempHighLbl;
+@property (weak, nonatomic) IBOutlet UILabel *currentTempLowLbl;
 
 @end
 

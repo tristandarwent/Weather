@@ -13,10 +13,12 @@ NS_ASSUME_NONNULL_BEGIN
 @interface City : NSObject <NSSecureCoding>
 
 @property (nonatomic, assign) NSInteger identifier;
-@property (weak, nonatomic) NSString *name;
+@property (nonatomic, strong) NSString *name;
 @property (nonatomic, assign) float currentTemp;
+@property (nonatomic, assign) float currentTempHigh;
+@property (nonatomic, assign) float currentTempLow;
 
-- (id)initWithIdentifier:(NSInteger)identifier name:(NSString *)name currentTemp:(float)currentTemp;
+- (id)initWithIdentifier:(NSInteger)identifier name:(NSString *)name currentTemp:(float)currentTemp currentTempHigh:(float)currentTempHigh currentTempLow:(float)currentTempLow ;
 
 @end
 

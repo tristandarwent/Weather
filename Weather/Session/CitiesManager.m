@@ -68,6 +68,7 @@
 #pragma mark - Functions
 
 - (void)addCity:(City *)city {
+    NSLog(@"NAME4: %@", city.name);
     [self.cities addObject:city];
     [self saveCities];
 }

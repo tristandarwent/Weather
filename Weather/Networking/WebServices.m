@@ -39,12 +39,12 @@ static NSString * const openWeatherBaseUrl = @"http://api.openweathermap.org/dat
 #pragma mark - Requests
 
 - (void)fetchCityDataWithCoordinates:(CLLocationCoordinate2D)coordinates name:(NSString *)name success:(void (^)(City *city))success failure:(void (^)(void))failure {
-    // Example URL: https://api.openweathermap.org/data/2.5/weather?lat=43.6382846&lon=-79.4161529&appid=4b0f1660a6c76013436a53a221591b23
+    // Example URL: https://api.openweathermap.org/data/2.5/weather?lat=43.6382846&lon=-79.4161529&units=metric&appid=4b0f1660a6c76013436a53a221591b23
     
     NSString *latString = [NSString stringWithFormat:@"%f", coordinates.latitude];
     NSString *longString = [NSString stringWithFormat:@"%f", coordinates.longitude];
     
-    NSString *path = [NSString stringWithFormat:@"weather?lat=%@&lon=%@", latString, longString];
+    NSString *path = [NSString stringWithFormat:@"weather?lat=%@&lon=%@&units=metric", latString, longString];
     
     [self.httpSessionManager GET:[self getFullUrlWithPath:path] parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if ([responseObject isKindOfClass:[NSDictionary class]]) {
