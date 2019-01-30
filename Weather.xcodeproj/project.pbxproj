@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		5E0CDEE2AED3E8BC3DC7F9B5 /* libPods-Weather.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 24419892EE09486D1BBF9548 /* libPods-Weather.a */; };
 		FC13FE7C2200DD1A000A32E4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FC13FE7B2200DD1A000A32E4 /* AppDelegate.m */; };
-		FC13FE7F2200DD1A000A32E4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC13FE7E2200DD1A000A32E4 /* ViewController.m */; };
 		FC13FE822200DD1A000A32E4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC13FE802200DD1A000A32E4 /* Main.storyboard */; };
 		FC13FE842200DD1B000A32E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC13FE832200DD1B000A32E4 /* Assets.xcassets */; };
 		FC13FE872200DD1B000A32E4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC13FE852200DD1B000A32E4 /* LaunchScreen.storyboard */; };
@@ -18,6 +17,8 @@
 		FC61632322012404006ECFDF /* City.m in Sources */ = {isa = PBXBuildFile; fileRef = FC61632222012404006ECFDF /* City.m */; };
 		FC61632722012710006ECFDF /* CityBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = FC61632622012710006ECFDF /* CityBuilder.m */; };
 		FC61632D22015EB1006ECFDF /* CitiesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FC61632C22015EB1006ECFDF /* CitiesManager.m */; };
+		FC61633522021F87006ECFDF /* HomeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC61633422021F87006ECFDF /* HomeTableViewController.m */; };
+		FC61633822021FA7006ECFDF /* CurrentWeatherTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FC61633722021FA7006ECFDF /* CurrentWeatherTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,8 +28,6 @@
 		FC13FE772200DD1A000A32E4 /* Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC13FE7A2200DD1A000A32E4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FC13FE7B2200DD1A000A32E4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		FC13FE7D2200DD1A000A32E4 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		FC13FE7E2200DD1A000A32E4 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		FC13FE812200DD1A000A32E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FC13FE832200DD1B000A32E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FC13FE862200DD1B000A32E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -42,6 +41,10 @@
 		FC61632622012710006ECFDF /* CityBuilder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CityBuilder.m; sourceTree = "<group>"; };
 		FC61632B22015EB1006ECFDF /* CitiesManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CitiesManager.h; sourceTree = "<group>"; };
 		FC61632C22015EB1006ECFDF /* CitiesManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CitiesManager.m; sourceTree = "<group>"; };
+		FC61633322021F87006ECFDF /* HomeTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeTableViewController.h; sourceTree = "<group>"; };
+		FC61633422021F87006ECFDF /* HomeTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeTableViewController.m; sourceTree = "<group>"; };
+		FC61633622021FA7006ECFDF /* CurrentWeatherTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CurrentWeatherTableViewCell.h; sourceTree = "<group>"; };
+		FC61633722021FA7006ECFDF /* CurrentWeatherTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CurrentWeatherTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,13 +101,13 @@
 				FC13FE7B2200DD1A000A32E4 /* AppDelegate.m */,
 				FC13FE962200F572000A32E4 /* Networking */,
 				FC6163202201226A006ECFDF /* Model */,
+				FC61633122021E16006ECFDF /* Session */,
 				FC13FE972200F587000A32E4 /* View Controllers */,
+				FC61633222021F55006ECFDF /* Cells */,
 				FC13FE982200F5B1000A32E4 /* Storyboards */,
 				FC13FE832200DD1B000A32E4 /* Assets.xcassets */,
 				FC13FE882200DD1B000A32E4 /* Info.plist */,
 				FC13FE892200DD1B000A32E4 /* main.m */,
-				FC61632B22015EB1006ECFDF /* CitiesManager.h */,
-				FC61632C22015EB1006ECFDF /* CitiesManager.m */,
 			);
 			path = Weather;
 			sourceTree = "<group>";
@@ -121,8 +124,8 @@
 		FC13FE972200F587000A32E4 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				FC13FE7D2200DD1A000A32E4 /* ViewController.h */,
-				FC13FE7E2200DD1A000A32E4 /* ViewController.m */,
+				FC61633322021F87006ECFDF /* HomeTableViewController.h */,
+				FC61633422021F87006ECFDF /* HomeTableViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -153,6 +156,24 @@
 				FC61632622012710006ECFDF /* CityBuilder.m */,
 			);
 			path = Builders;
+			sourceTree = "<group>";
+		};
+		FC61633122021E16006ECFDF /* Session */ = {
+			isa = PBXGroup;
+			children = (
+				FC61632B22015EB1006ECFDF /* CitiesManager.h */,
+				FC61632C22015EB1006ECFDF /* CitiesManager.m */,
+			);
+			path = Session;
+			sourceTree = "<group>";
+		};
+		FC61633222021F55006ECFDF /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				FC61633622021FA7006ECFDF /* CurrentWeatherTableViewCell.h */,
+				FC61633722021FA7006ECFDF /* CurrentWeatherTableViewCell.m */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -253,10 +274,11 @@
 			files = (
 				FC61632722012710006ECFDF /* CityBuilder.m in Sources */,
 				FC61632322012404006ECFDF /* City.m in Sources */,
-				FC13FE7F2200DD1A000A32E4 /* ViewController.m in Sources */,
 				FC13FE8A2200DD1B000A32E4 /* main.m in Sources */,
+				FC61633522021F87006ECFDF /* HomeTableViewController.m in Sources */,
 				FC13FE952200F56B000A32E4 /* WebServices.m in Sources */,
 				FC61632D22015EB1006ECFDF /* CitiesManager.m in Sources */,
+				FC61633822021FA7006ECFDF /* CurrentWeatherTableViewCell.m in Sources */,
 				FC13FE7C2200DD1A000A32E4 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

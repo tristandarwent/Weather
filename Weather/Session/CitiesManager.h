@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Cities.h"
 #import "City.h"
 
 NS_ASSUME_NONNULL_BEGIN

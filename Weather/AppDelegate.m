@@ -28,18 +28,18 @@
     
 //    [[CitiesManager sharedManager] clearCities];
     
-    City *city1 = [[City alloc] initWithIdentifier:1 name:@"Toronto" currentTemp: 32.3];
-    [[[CitiesManager sharedManager] cities] addObject:city1];
-
-    NSLog(@"%ld", [[CitiesManager sharedManager] cities].count);
-
-    [[CitiesManager sharedManager] saveCities];
-
-    for (City *city in [[CitiesManager sharedManager] cities]) {
-        NSLog(@"%ld", (long)city.identifier);
-        NSLog(@"%@", city.name);
-        NSLog(@"%f", city.currentTemp);
-    }
+//    City *city1 = [[City alloc] initWithIdentifier:1 name:@"Toronto" currentTemp: 32.3];
+//    [[[CitiesManager sharedManager] cities] addObject:city1];
+//
+//    NSLog(@"%ld", [[CitiesManager sharedManager] cities].count);
+//
+//    [[CitiesManager sharedManager] saveCities];
+//
+//    for (City *city in [[CitiesManager sharedManager] cities]) {
+//        NSLog(@"%ld", (long)city.identifier);
+//        NSLog(@"%@", city.name);
+//        NSLog(@"%f", city.currentTemp);
+//    }
     
     return YES;
 }
