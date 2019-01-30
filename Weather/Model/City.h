@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface City : NSObject
+@interface City : NSObject <NSSecureCoding>
 
 @property (nonatomic, assign) NSInteger identifier;
 @property (weak, nonatomic) NSString *name;

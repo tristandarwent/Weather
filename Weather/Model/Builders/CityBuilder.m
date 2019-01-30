@@ -12,8 +12,8 @@
 
 #pragma mark - Keys
 
-static NSString * const kKeyIdentifier = @"id";
-static NSString * const kKeyCurrentTemp = @"temp";
+#define kKeyIdentifier @"id"
+#define kKeyCurrentTemp @"temp"
 
 - (City *)buildCityWithName:(NSString *)name responseDict:(NSDictionary *)responseDict {
     

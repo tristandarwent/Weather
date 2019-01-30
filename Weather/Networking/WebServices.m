@@ -12,17 +12,16 @@
 
 #pragma mark - Variables
 
-static WebServices *sharedManager = nil;
-
 static NSString * const openWeatherMapApiKey = @"4b0f1660a6c76013436a53a221591b23";
 static NSString * const openWeatherBaseUrl = @"http://api.openweathermap.org/data/2.5/";
 
 #pragma mark - Initialization
 
 + (WebServices*)sharedManager {
+    static WebServices *sharedManager = nil;
+    
     static dispatch_once_t once;
-    dispatch_once(&once, ^
-    {
+    dispatch_once(&once, ^{
         sharedManager = [[WebServices alloc] init];
     });
     return sharedManager;

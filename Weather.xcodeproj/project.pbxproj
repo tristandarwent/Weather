@@ -17,6 +17,7 @@
 		FC13FE952200F56B000A32E4 /* WebServices.m in Sources */ = {isa = PBXBuildFile; fileRef = FC13FE942200F56B000A32E4 /* WebServices.m */; };
 		FC61632322012404006ECFDF /* City.m in Sources */ = {isa = PBXBuildFile; fileRef = FC61632222012404006ECFDF /* City.m */; };
 		FC61632722012710006ECFDF /* CityBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = FC61632622012710006ECFDF /* CityBuilder.m */; };
+		FC61632D22015EB1006ECFDF /* CitiesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FC61632C22015EB1006ECFDF /* CitiesManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,8 @@
 		FC61632222012404006ECFDF /* City.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = City.m; sourceTree = "<group>"; };
 		FC61632522012710006ECFDF /* CityBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CityBuilder.h; sourceTree = "<group>"; };
 		FC61632622012710006ECFDF /* CityBuilder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CityBuilder.m; sourceTree = "<group>"; };
+		FC61632B22015EB1006ECFDF /* CitiesManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CitiesManager.h; sourceTree = "<group>"; };
+		FC61632C22015EB1006ECFDF /* CitiesManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CitiesManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +103,8 @@
 				FC13FE832200DD1B000A32E4 /* Assets.xcassets */,
 				FC13FE882200DD1B000A32E4 /* Info.plist */,
 				FC13FE892200DD1B000A32E4 /* main.m */,
+				FC61632B22015EB1006ECFDF /* CitiesManager.h */,
+				FC61632C22015EB1006ECFDF /* CitiesManager.m */,
 			);
 			path = Weather;
 			sourceTree = "<group>";
@@ -251,6 +256,7 @@
 				FC13FE7F2200DD1A000A32E4 /* ViewController.m in Sources */,
 				FC13FE8A2200DD1B000A32E4 /* main.m in Sources */,
 				FC13FE952200F56B000A32E4 /* WebServices.m in Sources */,
+				FC61632D22015EB1006ECFDF /* CitiesManager.m in Sources */,
 				FC13FE7C2200DD1A000A32E4 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
