@@ -39,7 +39,7 @@ static NSString * const openWeatherBaseUrl = @"http://api.openweathermap.org/dat
 
 #pragma mark - Requests
 
-- (void)fetchWeatherData:(CLLocationCoordinate2D)coordinates {
+- (void)fetchCityDataWithCoordinates:(CLLocationCoordinate2D)coordinates name:(NSString *)name success:(void (^)(City *city))success failure:(void (^)(void))failure {
     // Example URL: https://api.openweathermap.org/data/2.5/weather?lat=43.6382846&lon=-79.4161529&appid=4b0f1660a6c76013436a53a221591b23
     
     NSString *latString = [NSString stringWithFormat:@"%f", coordinates.latitude];
@@ -48,9 +48,18 @@ static NSString * const openWeatherBaseUrl = @"http://api.openweathermap.org/dat
     NSString *path = [NSString stringWithFormat:@"weather?lat=%@&lon=%@", latString, longString];
     
     [self.httpSessionManager GET:[self getFullUrlWithPath:path] parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSLog(@"%@", responseObject);
+        if ([responseObject isKindOfClass:[NSDictionary class]]) {
+            NSDictionary *responseDict = responseObject;
+            CityBuilder *builder = [CityBuilder new];
+            City *city = [builder buildCityWithName:name responseDict:responseDict];
+            success(city);
+        } else {
+            failure();
+        }
+        
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"%@", error);
+        failure();
     }];
 }
 
@@ -64,6 +73,19 @@ static NSString * const openWeatherBaseUrl = @"http://api.openweathermap.org/dat
                      ];
 
     return url;
+}
+
+- (NSDictionary *)getDictionaryWithRequestData:(NSData *)data {
+    NSDictionary *jsonDict;
+    if (data != nil) {
+        jsonDict = [NSJSONSerialization JSONObjectWithData:data
+                                                       options:NSJSONReadingMutableContainers
+                                                         error:nil];
+        
+        return jsonDict;
+    }
+    
+    return nil;
 }
 
 @end

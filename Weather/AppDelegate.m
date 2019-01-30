@@ -18,7 +18,11 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    [[WebServices sharedManager] fetchWeatherData:CLLocationCoordinate2DMake(43.6382846, -79.4161529)];
+    [[WebServices sharedManager] fetchCityDataWithCoordinates:CLLocationCoordinate2DMake(43.6382846, -79.4161529) name:@"Toronto" success:^(City * _Nonnull city) {
+        NSLog(@"%@", city);
+    } failure:^{
+        // Do nothing
+    }];
     
     return YES;
 }

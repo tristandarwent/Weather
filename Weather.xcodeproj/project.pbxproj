@@ -15,6 +15,8 @@
 		FC13FE872200DD1B000A32E4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC13FE852200DD1B000A32E4 /* LaunchScreen.storyboard */; };
 		FC13FE8A2200DD1B000A32E4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FC13FE892200DD1B000A32E4 /* main.m */; };
 		FC13FE952200F56B000A32E4 /* WebServices.m in Sources */ = {isa = PBXBuildFile; fileRef = FC13FE942200F56B000A32E4 /* WebServices.m */; };
+		FC61632322012404006ECFDF /* City.m in Sources */ = {isa = PBXBuildFile; fileRef = FC61632222012404006ECFDF /* City.m */; };
+		FC61632722012710006ECFDF /* CityBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = FC61632622012710006ECFDF /* CityBuilder.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +35,10 @@
 		FC13FE892200DD1B000A32E4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FC13FE932200F56B000A32E4 /* WebServices.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebServices.h; sourceTree = "<group>"; };
 		FC13FE942200F56B000A32E4 /* WebServices.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebServices.m; sourceTree = "<group>"; };
+		FC61632122012404006ECFDF /* City.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = City.h; sourceTree = "<group>"; };
+		FC61632222012404006ECFDF /* City.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = City.m; sourceTree = "<group>"; };
+		FC61632522012710006ECFDF /* CityBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CityBuilder.h; sourceTree = "<group>"; };
+		FC61632622012710006ECFDF /* CityBuilder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CityBuilder.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +94,7 @@
 				FC13FE7A2200DD1A000A32E4 /* AppDelegate.h */,
 				FC13FE7B2200DD1A000A32E4 /* AppDelegate.m */,
 				FC13FE962200F572000A32E4 /* Networking */,
+				FC6163202201226A006ECFDF /* Model */,
 				FC13FE972200F587000A32E4 /* View Controllers */,
 				FC13FE982200F5B1000A32E4 /* Storyboards */,
 				FC13FE832200DD1B000A32E4 /* Assets.xcassets */,
@@ -122,6 +129,25 @@
 				FC13FE852200DD1B000A32E4 /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		FC6163202201226A006ECFDF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FC616324220126FA006ECFDF /* Builders */,
+				FC61632122012404006ECFDF /* City.h */,
+				FC61632222012404006ECFDF /* City.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FC616324220126FA006ECFDF /* Builders */ = {
+			isa = PBXGroup;
+			children = (
+				FC61632522012710006ECFDF /* CityBuilder.h */,
+				FC61632622012710006ECFDF /* CityBuilder.m */,
+			);
+			path = Builders;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -220,6 +246,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC61632722012710006ECFDF /* CityBuilder.m in Sources */,
+				FC61632322012404006ECFDF /* City.m in Sources */,
 				FC13FE7F2200DD1A000A32E4 /* ViewController.m in Sources */,
 				FC13FE8A2200DD1B000A32E4 /* main.m in Sources */,
 				FC13FE952200F56B000A32E4 /* WebServices.m in Sources */,

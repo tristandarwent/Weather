@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "AFNetworking.h"
 #import <CoreLocation/CoreLocation.h>
+#import "CityBuilder.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -18,8 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (id)sharedManager;
 
-- (void)fetchWeatherData:(CLLocationCoordinate2D)coordinates;
-
+- (void)fetchCityDataWithCoordinates:(CLLocationCoordinate2D)coordinates name:(NSString *)name success:(void (^)(City *city))success failure:(void (^)(void))failure;
 @end
 
 NS_ASSUME_NONNULL_END
