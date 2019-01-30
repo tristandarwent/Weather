@@ -9,8 +9,11 @@
 #import "HomeTableViewController.h"
 #import "CitiesManager.h"
 #import "CurrentWeatherTableViewCell.h"
+#import "WebServices.h"
+#import <CoreLocation/CoreLocation.h>
+@import GooglePlaces;
 
-@interface HomeTableViewController ()
+@interface HomeTableViewController () <GMSAutocompleteViewControllerDelegate>
 
 @end
 
@@ -19,11 +22,36 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+- (void)fetchCityDataWithCoordinates:(CLLocationCoordinate2D)coordinates name:(NSString *)name {
+    [[WebServices sharedManager] fetchCityDataWithCoordinates:coordinates name:name success:^(City * _Nonnull city) {
+        [[CitiesManager sharedManager] addCity: city];
+        [self.tableView reloadData];
+    } failure:^{
+        // Do something
+    }];
+}
+
+#pragma mark - IBActions
+
+- (IBAction)addCityBtnTapped:(id)sender {
+    GMSAutocompleteViewController *acController = [[GMSAutocompleteViewController alloc] init];
+    acController.delegate = self;
+    
+    GMSAutocompleteFilter *filter = [[GMSAutocompleteFilter alloc] init];
+    filter.type = kGMSPlacesAutocompleteTypeFilterCity;
+    acController.autocompleteFilter = filter;
+    
+    [self presentViewController:acController animated:YES completion:nil];
 }
 
 #pragma mark - Table view data source
@@ -91,5 +119,21 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark - Google Places Autocomplete Delegate
+
+- (void)viewController:(nonnull GMSAutocompleteViewController *)viewController didAutocompleteWithPlace:(nonnull GMSPlace *)place {
+    NSLog(@"DIDAUTOCOMPLETE: %@", place);
+    [self fetchCityDataWithCoordinates:place.coordinate name:place.name];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)viewController:(nonnull GMSAutocompleteViewController *)viewController didFailAutocompleteWithError:(nonnull NSError *)error {
+    NSLog(@"DIDFAIL: %@", error);
+}
+
+- (void)wasCancelled:(nonnull GMSAutocompleteViewController *)viewController {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 @end

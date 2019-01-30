@@ -7,5 +7,6 @@ target 'Weather' do
 
   # Pods for Weather
   pod 'AFNetworking', '~> 3.0'
+  pod 'GooglePlaces'
   
 end

@@ -18,7 +18,6 @@
     static dispatch_once_t once;
     dispatch_once(&once, ^{
         sharedManager = [[CitiesManager alloc] init];
-        NSLog(@"RUNNING");
     });
     return sharedManager;
 }
@@ -64,6 +63,13 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults removeObjectForKey:kKeyCities];
     [defaults synchronize];
+}
+
+#pragma mark - Functions
+
+- (void)addCity:(City *)city {
+    [self.cities addObject:city];
+    [self saveCities];
 }
 
 @end
