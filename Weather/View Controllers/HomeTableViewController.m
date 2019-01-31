@@ -31,8 +31,10 @@
 
 - (void)fetchCityDataWithCoordinates:(CLLocationCoordinate2D)coordinates name:(NSString *)name {
     [[WebServices sharedManager] fetchCityCurrentWeatherWithCoordinates:coordinates name:name success:^(City * _Nonnull city) {
-        [[CitiesManager sharedManager] addCity: city];
-        [self.tableView reloadData];
+        if (![[CitiesManager sharedManager] doesCityExistInCities:city.identifier]) {
+            [[CitiesManager sharedManager] addCity: city];
+            [self.tableView reloadData];
+        }
     } failure:^{
         // Do something
     }];
@@ -126,13 +128,12 @@
 #pragma mark - Google Places Autocomplete Delegate
 
 - (void)viewController:(nonnull GMSAutocompleteViewController *)viewController didAutocompleteWithPlace:(nonnull GMSPlace *)place {
-    NSLog(@"DIDAUTOCOMPLETE: %@", place);
     [self fetchCityDataWithCoordinates:place.coordinate name:place.name];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)viewController:(nonnull GMSAutocompleteViewController *)viewController didFailAutocompleteWithError:(nonnull NSError *)error {
-    NSLog(@"DIDFAIL: %@", error);
+    NSLog(@"Google Places Autocomplete FAILED: %@", error);
 }
 
 - (void)wasCancelled:(nonnull GMSAutocompleteViewController *)viewController {

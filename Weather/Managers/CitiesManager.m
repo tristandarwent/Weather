@@ -73,8 +73,20 @@
     [self saveCities];
 }
 
+- (BOOL)doesCityExistInCities:(NSInteger)identifier {
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"identifier == %ld", (long)identifier];
+    NSArray *filteredArray = [self.cities filteredArrayUsingPredicate:predicate];
+    
+    if (filteredArray.count > 0) {
+        return YES;
+    } else {
+        return NO;
+    }
+}
+
 - (void)updateCities:(void (^)(void))completion {
     __block int completed = 0;
+    
     for (City *oldCity in self.cities) {
         [[WebServices sharedManager] fetchCityCurrentWeatherWithIdentifier:oldCity.identifier name:oldCity.name success:^(City *city) {
             

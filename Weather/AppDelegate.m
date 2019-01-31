@@ -26,8 +26,6 @@
 //        // Do nothing
 //    }];
     
-//    [[CitiesManager sharedManager] clearCities];
-    
 //    City *city1 = [[City alloc] initWithIdentifier:1 name:@"Toronto" currentTemp: 32.3];
 //    [[[CitiesManager sharedManager] cities] addObject:city1];
 //
