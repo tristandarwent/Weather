@@ -7,6 +7,7 @@
 //
 
 #import "CitiesManager.h"
+#import "WebServices.h"
 
 @implementation CitiesManager
 
@@ -68,9 +69,33 @@
 #pragma mark - Functions
 
 - (void)addCity:(City *)city {
-    NSLog(@"NAME4: %@", city.name);
     [self.cities addObject:city];
     [self saveCities];
+}
+
+- (void)updateCities:(void (^)(void))completion {
+    __block int completed = 0;
+    for (City *oldCity in self.cities) {
+        [[WebServices sharedManager] fetchCityCurrentWeatherWithIdentifier:oldCity.identifier name:oldCity.name success:^(City *city) {
+            
+            NSUInteger index = [self.cities indexOfObjectIdenticalTo:oldCity];
+            if (index != NSNotFound) {
+                [self.cities replaceObjectAtIndex:index withObject:city];
+            }
+            
+            completed++;
+            if (completed == self.cities.count) {
+                [self saveCities];
+                completion();
+            }
+        } failure:^{
+            completed++;
+            if (completed == self.cities.count) {
+                [self saveCities];
+                completion();
+            }
+        }];
+    }
 }
 
 @end

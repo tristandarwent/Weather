@@ -38,15 +38,20 @@ static NSString * const openWeatherBaseUrl = @"http://api.openweathermap.org/dat
 
 #pragma mark - Requests
 
-- (void)fetchCityDataWithCoordinates:(CLLocationCoordinate2D)coordinates name:(NSString *)name success:(void (^)(City *city))success failure:(void (^)(void))failure {
-    // Example URL: https://api.openweathermap.org/data/2.5/weather?lat=43.6382846&lon=-79.4161529&units=metric&appid=4b0f1660a6c76013436a53a221591b23
+- (void)fetchCityCurrentWeatherWithCoordinates:(CLLocationCoordinate2D)coordinates name:(NSString *)name success:(void (^)(City *city))success failure:(void (^)(void))failure {
+    NSString *url = [NSString stringWithFormat:@"%@weather", openWeatherBaseUrl];
     
     NSString *latString = [NSString stringWithFormat:@"%f", coordinates.latitude];
     NSString *longString = [NSString stringWithFormat:@"%f", coordinates.longitude];
-    
-    NSString *path = [NSString stringWithFormat:@"weather?lat=%@&lon=%@&units=metric", latString, longString];
-    
-    [self.httpSessionManager GET:[self getFullUrlWithPath:path] parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+
+    NSDictionary *params = @{
+                             @"lat":latString,
+                             @"lon":longString,
+                             @"units":@"metric",
+                             @"appid":openWeatherMapApiKey
+                             };
+
+    [self.httpSessionManager GET:url parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if ([responseObject isKindOfClass:[NSDictionary class]]) {
             NSDictionary *responseDict = responseObject;
             CityBuilder *builder = [CityBuilder new];
@@ -62,29 +67,30 @@ static NSString * const openWeatherBaseUrl = @"http://api.openweathermap.org/dat
     }];
 }
 
-#pragma mark - Helper Functions
-
-- (NSString *)getFullUrlWithPath:(NSString *)path {
-    NSString *url = [NSString stringWithFormat:@"%@%@&appid=%@",
-                     openWeatherBaseUrl,
-                     path,
-                     openWeatherMapApiKey
-                     ];
-
-    return url;
-}
-
-- (NSDictionary *)getDictionaryWithRequestData:(NSData *)data {
-    NSDictionary *jsonDict;
-    if (data != nil) {
-        jsonDict = [NSJSONSerialization JSONObjectWithData:data
-                                                       options:NSJSONReadingMutableContainers
-                                                         error:nil];
-        
-        return jsonDict;
-    }
+- (void)fetchCityCurrentWeatherWithIdentifier:(NSInteger)identifier name:(NSString *)name success:(void (^)(City *city))success failure:(void (^)(void))failure {
     
-    return nil;
+    NSString *url = [NSString stringWithFormat:@"%@weather", openWeatherBaseUrl];
+    
+    NSDictionary *params = @{
+                             @"id":[NSNumber numberWithInteger:identifier],
+                             @"units":@"metric",
+                             @"appid":openWeatherMapApiKey
+                             };
+    
+    [self.httpSessionManager GET:url parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        if ([responseObject isKindOfClass:[NSDictionary class]]) {
+            NSDictionary *responseDict = responseObject;
+            CityBuilder *builder = [CityBuilder new];
+            City *city = [builder buildCityWithName:name responseDict:responseDict];
+            success(city);
+        } else {
+            failure();
+        }
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"%@", error);
+        failure();
+    }];
 }
 
 @end

@@ -101,7 +101,7 @@
 				FC13FE7B2200DD1A000A32E4 /* AppDelegate.m */,
 				FC13FE962200F572000A32E4 /* Networking */,
 				FC6163202201226A006ECFDF /* Model */,
-				FC61633122021E16006ECFDF /* Session */,
+				FC61633122021E16006ECFDF /* Managers */,
 				FC13FE972200F587000A32E4 /* View Controllers */,
 				FC61633222021F55006ECFDF /* Cells */,
 				FC13FE982200F5B1000A32E4 /* Storyboards */,
@@ -158,13 +158,13 @@
 			path = Builders;
 			sourceTree = "<group>";
 		};
-		FC61633122021E16006ECFDF /* Session */ = {
+		FC61633122021E16006ECFDF /* Managers */ = {
 			isa = PBXGroup;
 			children = (
 				FC61632B22015EB1006ECFDF /* CitiesManager.h */,
 				FC61632C22015EB1006ECFDF /* CitiesManager.m */,
 			);
-			path = Session;
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		FC61633222021F55006ECFDF /* Cells */ = {

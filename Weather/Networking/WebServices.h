@@ -19,7 +19,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (id)sharedManager;
 
-- (void)fetchCityDataWithCoordinates:(CLLocationCoordinate2D)coordinates name:(NSString *)name success:(void (^)(City *city))success failure:(void (^)(void))failure;
+- (void)fetchCityCurrentWeatherWithCoordinates:(CLLocationCoordinate2D)coordinates name:(NSString *)name success:(void (^)(City *city))success failure:(void (^)(void))failure;
+- (void)fetchCityCurrentWeatherWithIdentifier:(NSInteger)identifier name:(NSString *)name success:(void (^)(City *city))success failure:(void (^)(void))failure;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -23,13 +23,15 @@
     [super viewDidLoad];
     
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    
+    [[CitiesManager sharedManager] updateCities:^{
+        [self.tableView reloadData];
+    }];
 }
 
 - (void)fetchCityDataWithCoordinates:(CLLocationCoordinate2D)coordinates name:(NSString *)name {
-    NSLog(@"NAME2: %@", name);
-    [[WebServices sharedManager] fetchCityDataWithCoordinates:coordinates name:name success:^(City * _Nonnull city) {
+    [[WebServices sharedManager] fetchCityCurrentWeatherWithCoordinates:coordinates name:name success:^(City * _Nonnull city) {
         [[CitiesManager sharedManager] addCity: city];
-        NSLog(@"NAME3: %@", city.name);
         [self.tableView reloadData];
     } failure:^{
         // Do something
@@ -64,8 +66,6 @@
     City *city = [[CitiesManager sharedManager] cities][indexPath.row];
     
     CurrentWeatherTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:currentWeatherCellIdentifier forIndexPath:indexPath];
-    
-    NSLog(@"NAME10: %@", city.name);
     
     cell.cityNameLbl.text = city.name;
     cell.currentTempLbl.text = [NSString stringWithFormat:@"%.0f°C", city.currentTemp];
@@ -127,7 +127,6 @@
 
 - (void)viewController:(nonnull GMSAutocompleteViewController *)viewController didAutocompleteWithPlace:(nonnull GMSPlace *)place {
     NSLog(@"DIDAUTOCOMPLETE: %@", place);
-    NSLog(@"NAME: %@", place.name);
     [self fetchCityDataWithCoordinates:place.coordinate name:place.name];
     [self dismissViewControllerAnimated:YES completion:nil];
 }

@@ -20,6 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)saveCities;
 - (void)clearCities;
 - (void)addCity:(City *)city;
+- (void)updateCities:(void (^)(void))completion;
 
 @end
 

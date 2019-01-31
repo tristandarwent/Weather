@@ -101,15 +101,10 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Cities" id="h9z-Lz-lxP">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="WWr-rf-uBG">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="cli-Bo-ZHQ">
-                                <rect key="frame" x="276" y="7" width="83" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Add"/>
-                                <connections>
-                                    <action selector="addCityBtnTapped:" destination="xLQ-kt-Ll6" eventType="touchUpInside" id="xe3-6U-LRT"/>
-                                </connections>
-                            </button>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="WWr-rf-uBG">
+                            <connections>
+                                <action selector="addCityBtnTapped:" destination="xLQ-kt-Ll6" id="Oam-9Y-pIZ"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
