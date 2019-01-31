@@ -12,9 +12,12 @@
 #import "WebServices.h"
 #import <CoreLocation/CoreLocation.h>
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "DetailViewController.h"
 @import GooglePlaces;
 
 @interface HomeTableViewController () <GMSAutocompleteViewControllerDelegate>
+
+@property (weak, nonatomic) City *selectedCity;
 
 @end
 
@@ -86,7 +89,6 @@
     
     cell.cityNameLbl.text = city.name;
     cell.currentTempLbl.text = [NSString stringWithFormat:@"%.0f°C", city.currentTemp];
-    NSLog(@"ICON: %@", city.currentWeatherIconPath);
     [cell.currentWeatherIconImgView sd_setImageWithURL:[NSURL URLWithString:city.currentWeatherIconPath]];
     cell.currentHumidityLbl.text = [NSString stringWithFormat:@"%ld%%", (long)city.currentHumidity];
     cell.currentPressureLbl.text = [NSString stringWithFormat:@"%ld hPa", (long)city.currentPressure];
@@ -96,6 +98,11 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 112;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    self.selectedCity = [[CitiesManager sharedManager] cities][indexPath.row];
+    [self performSegueWithIdentifier: @"toDetail" sender: self];
 }
 
 /*
@@ -132,15 +139,15 @@
 }
 */
 
-/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"toDetail"]) {
+        DetailViewController *vc = [segue destinationViewController];
+        vc.city = self.selectedCity;
+    }
 }
-*/
 
 #pragma mark - Google Places Autocomplete Delegate
 
