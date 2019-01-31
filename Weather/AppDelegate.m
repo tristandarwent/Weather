@@ -7,9 +7,6 @@
 //
 
 #import "AppDelegate.h"
-//#import "WebServices.h"
-#import "CitiesManager.h"
-#import "City.h"
 @import GooglePlaces;
 
 @interface AppDelegate ()
@@ -20,27 +17,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-//    [[WebServices sharedManager] fetchCityCurrentWeatherWithCoordinates:CLLocationCoordinate2DMake(43.6382846, -79.4161529) name:@"Toronto" success:^(City * _Nonnull city) {
-//        NSLog(@"%@", city);
-//    } failure:^{
-//        // Do nothing
-//    }];
-    
-//    City *city1 = [[City alloc] initWithIdentifier:1 name:@"Toronto" currentTemp: 32.3];
-//    [[[CitiesManager sharedManager] cities] addObject:city1];
-//
-//    NSLog(@"%ld", [[CitiesManager sharedManager] cities].count);
-//
-//    [[CitiesManager sharedManager] saveCities];
-//
-//    for (City *city in [[CitiesManager sharedManager] cities]) {
-//        NSLog(@"%ld", (long)city.identifier);
-//        NSLog(@"%@", city.name);
-//        NSLog(@"%f", city.currentTemp);
-//    }
-    
+
     [GMSPlacesClient provideAPIKey:@"AIzaSyDPxIS8mjw160qUxF2xcjqpbxSCD1nhALA"];
-    
     
     return YES;
 }

@@ -26,30 +26,45 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    // Remove any empty cells in the tableview
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
+    // Update current weather city data whene app opens
     if ([[CitiesManager sharedManager] cities].count > 0) {
         [self hideTableHeaderView:YES];
         [[CitiesManager sharedManager] updateCities:^{
             [self.tableView reloadData];
-//            [[CitiesManager sharedManager] clearCities];
         }];
     }
-    
 }
 
+// Fetch city data and add it to the CitiesManager
 - (void)fetchCityDataWithCoordinates:(CLLocationCoordinate2D)coordinates name:(NSString *)name {
     [[WebServices sharedManager] fetchCityCurrentWeatherWithCoordinates:coordinates name:name success:^(City * _Nonnull city) {
+        
+        // Make sure city doesn't exist in array already before adding it and reloading data
         if (![[CitiesManager sharedManager] doesCityExistInCities:city.identifier]) {
             [[CitiesManager sharedManager] addCity: city];
             [self.tableView reloadData];
             [self hideTableHeaderView:YES];
         }
     } failure:^{
-        // Do something
+        UIAlertController *alert = [UIAlertController
+                                     alertControllerWithTitle:@"City Not Found"
+                                     message:@"We had an issue retrieving weather data for that city."
+                                     preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction* okayButton = [UIAlertAction
+                                    actionWithTitle:@"Okay"
+                                    style:UIAlertActionStyleDefault
+                                    handler:nil];
+        
+        [alert addAction:okayButton];
+        [self presentViewController:alert animated:YES completion:nil];
     }];
 }
 
+// Hides/unhides the tableheaderview
 - (void)hideTableHeaderView:(BOOL)hide {
     if (hide) {
         self.tableView.tableHeaderView = nil;
@@ -60,6 +75,7 @@
 
 #pragma mark - IBActions
 
+// Opens up the Google Places Autocomplete Modal
 - (IBAction)addCityBtnTapped:(id)sender {
     GMSAutocompleteViewController *acController = [[GMSAutocompleteViewController alloc] init];
     acController.delegate = self;
@@ -104,40 +120,6 @@
     [self performSegueWithIdentifier: @"toDetail" sender: self];
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -157,6 +139,7 @@
 
 - (void)viewController:(nonnull GMSAutocompleteViewController *)viewController didFailAutocompleteWithError:(nonnull NSError *)error {
     NSLog(@"Google Places Autocomplete FAILED: %@", error);
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)wasCancelled:(nonnull GMSAutocompleteViewController *)viewController {

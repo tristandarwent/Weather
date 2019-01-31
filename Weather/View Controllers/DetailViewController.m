@@ -21,26 +21,36 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
+    // Make sure view closes if it somehow displayed without any target city data
     if (self.city != nil) {
         [self setUpCurrentWeatherUI];
+        [self setUpDateFormatters];
+        [self setUpTableView];
+        
+        // Look for and update any future forecast weather data and display it
+        [[CitiesManager sharedManager] updateCityWithFutureWeatherWithCity:self.city completion:^(City * _Nonnull city) {
+            self.city = city;
+            [self.tableView reloadData];
+        }];
     } else {
         [self.navigationController popViewControllerAnimated:YES];
     }
+}
 
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
-
+- (void)setUpDateFormatters {
     self.dateFormatter = [[NSDateFormatter alloc] init];
     self.timeFormatter = [[NSDateFormatter alloc] init];
     [self.dateFormatter setDateFormat:@"EEE d"];
     [self.timeFormatter setDateFormat:@"h:mm a"];
+}
+
+- (void)setUpTableView {
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
     
-    [[CitiesManager sharedManager] updateCityWithFutureWeatherWithCity:self.city completion:^(City * _Nonnull city) {
-        self.city = city;
-        [self.tableView reloadData];
-    }];
+    // Remove any empty cells in the tableview
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
 
 - (void)setUpCurrentWeatherUI {
