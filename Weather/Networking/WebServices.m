@@ -95,4 +95,32 @@ static NSString * const openWeatherBaseUrl = @"http://api.openweathermap.org/dat
     }];
 }
 
+- (void)fetchCityFutureWeatherWithCity:(City *)city success:(void (^)(City *city))success failure:(void (^)(void))failure {
+    
+    NSString *url = [NSString stringWithFormat:@"%@forecast", openWeatherBaseUrl];
+    
+    NSDictionary *params = @{
+                             @"id":[NSNumber numberWithInteger:city.identifier],
+                             @"units":@"metric",
+                             @"appid":openWeatherMapApiKey
+                             };
+    
+    [self.httpSessionManager GET:url parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        if ([responseObject isKindOfClass:[NSDictionary class]]) {
+            NSDictionary *responseDict = responseObject;
+            WeatherBuilder *builder = [WeatherBuilder new];
+            NSMutableArray<Weather *> *futureWeather = [builder buildWeatherArrayWithResponseDict:responseDict];
+            City *updatedCity = city;
+            updatedCity.futureWeather = futureWeather;
+            success(city);
+        } else {
+            failure();
+        }
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"%@", error);
+        failure();
+    }];
+}
+
 @end

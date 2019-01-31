@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Weather.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -19,7 +20,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) NSInteger currentHumidity;
 @property (nonatomic, assign) NSInteger currentPressure;
 
-- (id)initWithIdentifier:(NSInteger)identifier name:(NSString *)name currentTemp:(float)currentTemp currentWeatherIconPath:(NSString *)currentWeatherIconPath currentHumidity:(NSInteger)currentHumidity currentPressure:(NSInteger)currentPressure ;
+@property (nonatomic, strong) NSMutableArray<Weather *> *futureWeather;
+
+- (id)initWithIdentifier:(NSInteger)identifier name:(NSString *)name currentTemp:(float)currentTemp currentWeatherIconPath:(NSString *)currentWeatherIconPath currentHumidity:(NSInteger)currentHumidity currentPressure:(NSInteger)currentPressure;
 
 @end
 

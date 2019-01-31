@@ -22,6 +22,8 @@
         self.currentWeatherIconPath = currentWeatherIconPath;
         self.currentHumidity = currentHumidity;
         self.currentPressure = currentPressure;
+        
+        self.futureWeather = [[NSMutableArray alloc] init];
     }
     
     return self;
@@ -35,8 +37,9 @@
 #define kKeyCurrentWeatherIconPath @"currentWeatherIconPath"
 #define kKeyCurrentHumidity @"currentHumidity"
 #define kKeyCurrentPressure @"currentPressure"
+#define kKeyFutureWeather @"futureWeather"
 
-+ (BOOL)supportsSecureCoding{
++ (BOOL)supportsSecureCoding {
     return YES;
 }
 
@@ -47,6 +50,7 @@
     [aCoder encodeObject:self.currentWeatherIconPath forKey:kKeyCurrentWeatherIconPath];
     [aCoder encodeObject:[NSNumber numberWithInteger:self.currentHumidity] forKey:kKeyCurrentHumidity];
     [aCoder encodeObject:[NSNumber numberWithInteger:self.currentPressure] forKey:kKeyCurrentPressure];
+    [aCoder encodeObject:self.futureWeather forKey:kKeyFutureWeather];
 }
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
@@ -57,7 +61,16 @@
     float currentHumidity = [[aDecoder decodeObjectOfClass:[NSNumber class] forKey:kKeyCurrentHumidity] integerValue];
     float currentPressure = [[aDecoder decodeObjectOfClass:[NSNumber class] forKey:kKeyCurrentPressure] integerValue];
     
-    return [self initWithIdentifier:identifier name:name currentTemp:currentTemp currentWeatherIconPath:currentWeatherIconPath currentHumidity:currentHumidity currentPressure:currentPressure];
+    NSSet *codedClasses = [NSSet setWithArray:@[
+                                                   [NSMutableArray class],
+                                                   [Weather class]
+                                                   ]];
+    NSMutableArray<Weather *> *futureWeather = [aDecoder decodeObjectOfClasses:codedClasses forKey:kKeyFutureWeather];
+    
+    City *city = [self initWithIdentifier:identifier name:name currentTemp:currentTemp currentWeatherIconPath:currentWeatherIconPath currentHumidity:currentHumidity currentPressure:currentPressure];
+    city.futureWeather = futureWeather;
+    
+    return city;
 }
 
 @end

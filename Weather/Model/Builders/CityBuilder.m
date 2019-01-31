@@ -18,6 +18,7 @@
 #define kKeyCurrentHumidity @"humidity"
 #define kKeyCurrentPressure @"pressure"
 
+#pragma mark - Functions
 
 - (City *)buildCityWithName:(NSString *)name responseDict:(NSDictionary *)responseDict {
     

@@ -243,6 +243,7 @@
                         <outlet property="currentPressureLbl" destination="cJM-9D-PPI" id="Y6x-1r-dgF"/>
                         <outlet property="currentTempLbl" destination="t7R-oN-5H1" id="2So-CS-4lw"/>
                         <outlet property="currentWeatherIconImgView" destination="Bw3-ls-AB7" id="snZ-I9-W18"/>
+                        <outlet property="tableView" destination="utH-Il-dyV" id="HIa-8t-hTz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mbT-ze-lwm" userLabel="First Responder" sceneMemberID="firstResponder"/>

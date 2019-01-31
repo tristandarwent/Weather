@@ -10,6 +10,7 @@
 #import "AFNetworking.h"
 #import <CoreLocation/CoreLocation.h>
 #import "CityBuilder.h"
+#import "WeatherBuilder.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -21,6 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)fetchCityCurrentWeatherWithCoordinates:(CLLocationCoordinate2D)coordinates name:(NSString *)name success:(void (^)(City *city))success failure:(void (^)(void))failure;
 - (void)fetchCityCurrentWeatherWithIdentifier:(NSInteger)identifier name:(NSString *)name success:(void (^)(City *city))success failure:(void (^)(void))failure;
+- (void)fetchCityFutureWeatherWithCity:(City *)city success:(void (^)(City *city))success failure:(void (^)(void))failure;
 
 @end
 

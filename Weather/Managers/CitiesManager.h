@@ -22,6 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)addCity:(City *)city;
 - (BOOL)doesCityExistInCities:(NSInteger)identifier;
 - (void)updateCities:(void (^)(void))completion;
+- (void)updateCityWithFutureWeatherWithCity:(City *)city completion:(void (^)(City *city))completion;
 
 @end
 

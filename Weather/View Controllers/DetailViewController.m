@@ -24,6 +24,22 @@
     } else {
         [self.navigationController popViewControllerAnimated:YES];
     }
+    
+    NSLog(@"FUTURE: %@", self.city.futureWeather);
+    if (self.city.futureWeather.count > 0) {
+        NSLog(@"FUTURE: %@", self.city.futureWeather[0].date);
+        NSLog(@"FUTURE: %f", self.city.futureWeather[0].temp);
+    }
+    
+    [[CitiesManager sharedManager] updateCityWithFutureWeatherWithCity:self.city completion:^(City * _Nonnull city) {
+        self.city = city;
+        
+        NSLog(@"FUTURE: %@", self.city.futureWeather);
+        if (self.city.futureWeather.count > 0) {
+            NSLog(@"FUTURE: %@", self.city.futureWeather[0].date);
+            NSLog(@"FUTURE: %f", self.city.futureWeather[0].temp);
+        }
+    }];
 }
 
 - (void)setUpCurrentWeatherUI {

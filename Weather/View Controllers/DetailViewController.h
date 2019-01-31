@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "City.h"
+#import "CitiesManager.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -20,6 +21,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIImageView *currentWeatherIconImgView;
 @property (weak, nonatomic) IBOutlet UILabel *currentHumidityLbl;
 @property (weak, nonatomic) IBOutlet UILabel *currentPressureLbl;
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 

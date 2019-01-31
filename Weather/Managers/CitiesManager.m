@@ -92,7 +92,9 @@
             
             NSUInteger index = [self.cities indexOfObjectIdenticalTo:oldCity];
             if (index != NSNotFound) {
-                [self.cities replaceObjectAtIndex:index withObject:city];
+                City *updatedCity = city;
+                city.futureWeather = oldCity.futureWeather;
+                [self.cities replaceObjectAtIndex:index withObject:updatedCity];
             }
             
             completed++;
@@ -108,6 +110,19 @@
             }
         }];
     }
+}
+
+- (void)updateCityWithFutureWeatherWithCity:(City *)city completion:(void (^)(City *city))completion {
+    [[WebServices sharedManager] fetchCityFutureWeatherWithCity:city success:^(City * _Nonnull updatedCity) {
+        NSUInteger index = [self.cities indexOfObjectIdenticalTo:city];
+        if (index != NSNotFound) {
+            [self.cities replaceObjectAtIndex:index withObject:updatedCity];
+            [self saveCities];
+        }
+        completion(updatedCity);
+    } failure:^{
+        completion(city);
+    }];
 }
 
 @end
