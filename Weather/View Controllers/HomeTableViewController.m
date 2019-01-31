@@ -84,7 +84,6 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *currentWeatherCellIdentifier = @"Current Weather Cell";
     City *city = [[CitiesManager sharedManager] cities][indexPath.row];
-    
     CurrentWeatherTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:currentWeatherCellIdentifier forIndexPath:indexPath];
     
     cell.cityNameLbl.text = city.name;

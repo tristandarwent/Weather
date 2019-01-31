@@ -12,9 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Weather : NSObject <NSSecureCoding>
 
-@property (nonatomic, weak) NSDate *date;
+@property (nonatomic, strong) NSDate *date;
 @property (nonatomic, assign) float temp;
-@property (nonatomic, weak) NSString *weatherIconPath;
+@property (nonatomic, strong) NSString *weatherIconPath;
 
 - (id)initWithDate:(NSDate *)date temp:(float)temp weatherIconPath:(NSString *)weatherIconPath;
 

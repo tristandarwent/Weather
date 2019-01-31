@@ -22,6 +22,7 @@
 		FC61633E2202A42C006ECFDF /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC61633D2202A42C006ECFDF /* DetailViewController.m */; };
 		FC6163412202B685006ECFDF /* Weather.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6163402202B685006ECFDF /* Weather.m */; };
 		FC6163442202BC29006ECFDF /* WeatherBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6163432202BC29006ECFDF /* WeatherBuilder.m */; };
+		FC6163472202CB15006ECFDF /* FutureWeatherTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FC6163462202CB15006ECFDF /* FutureWeatherTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,8 @@
 		FC6163402202B685006ECFDF /* Weather.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Weather.m; sourceTree = "<group>"; };
 		FC6163422202BC29006ECFDF /* WeatherBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeatherBuilder.h; sourceTree = "<group>"; };
 		FC6163432202BC29006ECFDF /* WeatherBuilder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeatherBuilder.m; sourceTree = "<group>"; };
+		FC6163452202CB15006ECFDF /* FutureWeatherTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FutureWeatherTableViewCell.h; sourceTree = "<group>"; };
+		FC6163462202CB15006ECFDF /* FutureWeatherTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FutureWeatherTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +190,8 @@
 			children = (
 				FC61633622021FA7006ECFDF /* CurrentWeatherTableViewCell.h */,
 				FC61633722021FA7006ECFDF /* CurrentWeatherTableViewCell.m */,
+				FC6163452202CB15006ECFDF /* FutureWeatherTableViewCell.h */,
+				FC6163462202CB15006ECFDF /* FutureWeatherTableViewCell.m */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -315,6 +320,7 @@
 				FC61633E2202A42C006ECFDF /* DetailViewController.m in Sources */,
 				FC13FE8A2200DD1B000A32E4 /* main.m in Sources */,
 				FC6163412202B685006ECFDF /* Weather.m in Sources */,
+				FC6163472202CB15006ECFDF /* FutureWeatherTableViewCell.m in Sources */,
 				FC61633522021F87006ECFDF /* HomeTableViewController.m in Sources */,
 				FC13FE952200F56B000A32E4 /* WebServices.m in Sources */,
 				FC6163442202BC29006ECFDF /* WeatherBuilder.m in Sources */,
