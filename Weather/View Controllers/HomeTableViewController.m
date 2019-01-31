@@ -11,6 +11,7 @@
 #import "CurrentWeatherTableViewCell.h"
 #import "WebServices.h"
 #import <CoreLocation/CoreLocation.h>
+#import <SDWebImage/UIImageView+WebCache.h>
 @import GooglePlaces;
 
 @interface HomeTableViewController () <GMSAutocompleteViewControllerDelegate>
@@ -85,9 +86,10 @@
     
     cell.cityNameLbl.text = city.name;
     cell.currentTempLbl.text = [NSString stringWithFormat:@"%.0f°C", city.currentTemp];
+    NSLog(@"ICON: %@", city.currentWeatherIconPath);
+    [cell.currentWeatherIconImgView sd_setImageWithURL:[NSURL URLWithString:city.currentWeatherIconPath]];
     cell.currentHumidityLbl.text = [NSString stringWithFormat:@"%ld%%", (long)city.currentHumidity];
     cell.currentPressureLbl.text = [NSString stringWithFormat:@"%ld hPa", (long)city.currentPressure];
-    
     
     return cell;
 }

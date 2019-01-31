@@ -23,7 +23,7 @@
     
     NSInteger identifier = [[responseDict objectForKey:kKeyIdentifier] integerValue];
     float currentTemp = [[[responseDict objectForKey:@"main"] objectForKey:kKeyCurrentTemp] floatValue];
-    NSString *currentWeatherIconPath = [[responseDict objectForKey:@"weather"][0] objectForKey:kKeyCurrentWeatherIconPath];
+    NSString *currentWeatherIconPath = [NSString stringWithFormat:@"http://openweathermap.org/img/w/%@.png", [[responseDict objectForKey:@"weather"][0] objectForKey:kKeyCurrentWeatherIconPath]];
     float currentHumidity = [[[responseDict objectForKey:@"main"] objectForKey:kKeyCurrentHumidity] integerValue];
     float currentPressure = [[[responseDict objectForKey:@"main"] objectForKey:kKeyCurrentPressure] integerValue];
     
