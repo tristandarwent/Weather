@@ -53,6 +53,8 @@ static NSString * const openWeatherBaseUrl = @"http://api.openweathermap.org/dat
 
     [self.httpSessionManager GET:url parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if ([responseObject isKindOfClass:[NSDictionary class]]) {
+            NSLog(@"%@", responseObject);
+            
             NSDictionary *responseDict = responseObject;
             CityBuilder *builder = [CityBuilder new];
             City *city = [builder buildCityWithName:name responseDict:responseDict];

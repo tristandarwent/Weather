@@ -44,7 +44,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IQv-Ua-W8b">
-                                            <rect key="frame" x="16" y="45.5" width="185" height="21"/>
+                                            <rect key="frame" x="16" y="45.5" width="179" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -67,20 +67,20 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="High" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bz0-8e-w7X">
-                                            <rect key="frame" x="314" y="16" width="26.5" height="14.5"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Humidity" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bz0-8e-w7X">
+                                            <rect key="frame" x="301.5" y="16" width="51" height="14.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Low" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9x1-E3-g3g">
-                                            <rect key="frame" x="315.5" y="61" width="23" height="14.5"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pressure" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9x1-E3-g3g">
+                                            <rect key="frame" x="302" y="61" width="50" height="14.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" text="23°C" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VUg-Sw-dHy">
-                                            <rect key="frame" x="223" y="44" width="50" height="24"/>
+                                            <rect key="frame" x="217" y="44" width="50" height="24"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="4k7-yG-eLt"/>
                                             </constraints>
@@ -102,14 +102,14 @@
                                         <constraint firstItem="sej-qi-rVg" firstAttribute="top" secondItem="Bz0-8e-w7X" secondAttribute="bottom" constant="2" id="e4L-8Q-DlZ"/>
                                         <constraint firstAttribute="trailing" secondItem="pk6-Gs-HfB" secondAttribute="trailing" constant="16" id="e4W-tD-FB2"/>
                                         <constraint firstAttribute="bottom" secondItem="pk6-Gs-HfB" secondAttribute="bottom" constant="16" id="nEC-K6-2dP"/>
-                                        <constraint firstItem="sej-qi-rVg" firstAttribute="leading" secondItem="VUg-Sw-dHy" secondAttribute="trailing" constant="22" id="taM-L7-xgE"/>
+                                        <constraint firstItem="sej-qi-rVg" firstAttribute="leading" secondItem="VUg-Sw-dHy" secondAttribute="trailing" constant="28" id="taM-L7-xgE"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="cityNameLbl" destination="IQv-Ua-W8b" id="vxL-be-cio"/>
-                                    <outlet property="currentTempHighLbl" destination="sej-qi-rVg" id="Xp4-Eg-u5v"/>
+                                    <outlet property="currentHumidityLbl" destination="sej-qi-rVg" id="PYO-bu-Ed7"/>
+                                    <outlet property="currentPressureLbl" destination="pk6-Gs-HfB" id="BS4-Fs-BMt"/>
                                     <outlet property="currentTempLbl" destination="VUg-Sw-dHy" id="i8h-Sx-Qab"/>
-                                    <outlet property="currentTempLowLbl" destination="pk6-Gs-HfB" id="Z0u-Zv-etE"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

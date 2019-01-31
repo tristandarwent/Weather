@@ -15,10 +15,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) NSInteger identifier;
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, assign) float currentTemp;
-@property (nonatomic, assign) float currentTempHigh;
-@property (nonatomic, assign) float currentTempLow;
+@property (nonatomic, strong) NSString *currentWeatherIconPath;
+@property (nonatomic, assign) NSInteger currentHumidity;
+@property (nonatomic, assign) NSInteger currentPressure;
 
-- (id)initWithIdentifier:(NSInteger)identifier name:(NSString *)name currentTemp:(float)currentTemp currentTempHigh:(float)currentTempHigh currentTempLow:(float)currentTempLow ;
+- (id)initWithIdentifier:(NSInteger)identifier name:(NSString *)name currentTemp:(float)currentTemp currentWeatherIconPath:(NSString *)currentWeatherIconPath currentHumidity:(NSInteger)currentHumidity currentPressure:(NSInteger)currentPressure ;
 
 @end
 

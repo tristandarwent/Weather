@@ -28,6 +28,7 @@
         [self hideTableHeaderView:YES];
         [[CitiesManager sharedManager] updateCities:^{
             [self.tableView reloadData];
+//            [[CitiesManager sharedManager] clearCities];
         }];
     }
     
@@ -84,8 +85,9 @@
     
     cell.cityNameLbl.text = city.name;
     cell.currentTempLbl.text = [NSString stringWithFormat:@"%.0f°C", city.currentTemp];
-    cell.currentTempHighLbl.text = [NSString stringWithFormat:@"%.0f°C", city.currentTempHigh];
-    cell.currentTempLowLbl.text = [NSString stringWithFormat:@"%.0f°C", city.currentTempLow];
+    cell.currentHumidityLbl.text = [NSString stringWithFormat:@"%ld%%", (long)city.currentHumidity];
+    cell.currentPressureLbl.text = [NSString stringWithFormat:@"%ld hPa", (long)city.currentPressure];
+    
     
     return cell;
 }

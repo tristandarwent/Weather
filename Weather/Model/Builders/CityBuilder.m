@@ -14,18 +14,20 @@
 
 #define kKeyIdentifier @"id"
 #define kKeyCurrentTemp @"temp"
-#define kKeyCurrentTempHigh @"temp_max"
-#define kKeyCurrentTempLow @"temp_min"
+#define kKeyCurrentWeatherIconPath @"icon"
+#define kKeyCurrentHumidity @"humidity"
+#define kKeyCurrentPressure @"pressure"
 
 
 - (City *)buildCityWithName:(NSString *)name responseDict:(NSDictionary *)responseDict {
     
     NSInteger identifier = [[responseDict objectForKey:kKeyIdentifier] integerValue];
     float currentTemp = [[[responseDict objectForKey:@"main"] objectForKey:kKeyCurrentTemp] floatValue];
-    float currentTempHigh = [[[responseDict objectForKey:@"main"] objectForKey:kKeyCurrentTempHigh] floatValue];
-    float currentTempLow = [[[responseDict objectForKey:@"main"] objectForKey:kKeyCurrentTempLow] floatValue];
+    NSString *currentWeatherIconPath = [[responseDict objectForKey:@"weather"][0] objectForKey:kKeyCurrentWeatherIconPath];
+    float currentHumidity = [[[responseDict objectForKey:@"main"] objectForKey:kKeyCurrentHumidity] integerValue];
+    float currentPressure = [[[responseDict objectForKey:@"main"] objectForKey:kKeyCurrentPressure] integerValue];
     
-    City *city = [[City alloc] initWithIdentifier:identifier name:name currentTemp:currentTemp currentTempHigh:currentTempHigh currentTempLow:currentTempLow];
+    City *city = [[City alloc] initWithIdentifier:identifier name:name currentTemp:currentTemp currentWeatherIconPath:currentWeatherIconPath currentHumidity:currentHumidity currentPressure:currentPressure];
 
     return city;
 }
