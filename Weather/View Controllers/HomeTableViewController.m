@@ -24,9 +24,13 @@
     
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
-    [[CitiesManager sharedManager] updateCities:^{
-        [self.tableView reloadData];
-    }];
+    if ([[CitiesManager sharedManager] cities].count > 0) {
+        [self hideTableHeaderView:YES];
+        [[CitiesManager sharedManager] updateCities:^{
+            [self.tableView reloadData];
+        }];
+    }
+    
 }
 
 - (void)fetchCityDataWithCoordinates:(CLLocationCoordinate2D)coordinates name:(NSString *)name {
@@ -34,10 +38,19 @@
         if (![[CitiesManager sharedManager] doesCityExistInCities:city.identifier]) {
             [[CitiesManager sharedManager] addCity: city];
             [self.tableView reloadData];
+            [self hideTableHeaderView:YES];
         }
     } failure:^{
         // Do something
     }];
+}
+
+- (void)hideTableHeaderView:(BOOL)hide {
+    if (hide) {
+        self.tableView.tableHeaderView = nil;
+    } else {
+        self.tableView.tableHeaderView = self.tableHeaderView;
+    }
 }
 
 #pragma mark - IBActions

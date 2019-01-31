@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface HomeTableViewController : UITableViewController
 
+@property (weak, nonatomic) IBOutlet UIView *tableHeaderView;
+
 @end
 
 NS_ASSUME_NONNULL_END
