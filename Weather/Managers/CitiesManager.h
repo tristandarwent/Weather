@@ -18,7 +18,6 @@ NS_ASSUME_NONNULL_BEGIN
 + (id)sharedManager;
 
 - (void)saveCities;
-- (void)clearCities;
 - (void)addCity:(City *)city;
 - (BOOL)doesCityExistInCities:(NSInteger)identifier;
 - (void)updateCities:(void (^)(void))completion;
